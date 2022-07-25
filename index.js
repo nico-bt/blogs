@@ -4,13 +4,20 @@ const app = express()
 // Set EJS to be the view engine
 app.set("view engine", "ejs")
 
+
+// Dummy data to pass to the "ejs" template
+const data = [
+    {name: "Hugo", country: "Argentina"}, 
+    {name: "John", country: "Spain"},
+    {name: "Catalina", country: "Rusia"}
+]
+
+// Routes
 app.get("/", (req, res)=>{
-    res.render("index")
+    res.render("index", {data})
 })
 
 app.get("/about", (req, res)=>{
-    // res.send("<h1>About Page</h1>")
-    // res.sendFile("./views/about.html", {root: __dirname})
     res.render("about")
 })
 
