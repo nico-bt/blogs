@@ -6,14 +6,17 @@
 
   <%- include("./partials/nav.ejs") %>
 
-  <h1>Add new blog</h1>
-
-  <div class="add-person-form">
+  <div class="add-blog">
       <form>
-        <label for="title">Name:</label>
-        <input type="text" id="name" name="name" required>
-        <label for="country">Country:</label>
-        <input type="text" id="country" name="country" required>
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title" required>
+        
+        <label for="shortDescription">Short description:</label>
+        <input type="text" id="shortDescription" name="shortDescription" required>
+        
+        <label for="content">Content: </label>
+        <textarea name="content" id="content" rows="14"></textarea>
+
         <button>Submit</button>
       </form>
     </div>

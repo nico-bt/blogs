@@ -4,13 +4,14 @@
 <body>
     
     <%- include("./partials/nav.ejs") %>
-
-    <h1>Data from index.js</h1>
+        
     <% data.map(item => { %>
-        <div class="item">
-            <h2><%= item.name %></h2>
-            <p><%= item.country %></p>
-        </div>
+        <a href="/blogs/<%= item._id %>" class="item-link">
+            <div class="item">
+                <h2><%= item.title %></h2>
+                <p><%= item.shortDescription %></p>
+            </div>
+        </a>
     <% }) %>
 
     <%- include("./partials/footer.ejs") %>

@@ -2,21 +2,28 @@
 
 body{
     max-width: 800px;
-    margin: 20px auto;
+    margin: 0 auto;
     padding: 0 20px;
     font-family: 'Noto Serif', serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
 }
 p, h1, h2, h3, a, ul{
-    margin: 0;
-    padding: 0;
+    /* margin: 0; */
+    /* padding: 0; */
     text-decoration: none;
     color: #222;
+}
+p{
+    line-height: 1.6;
 }
 /* nav & footer styles */
 nav{
     display: flex;
     justify-content: space-between;
-    margin-bottom: 60px;
+    margin-bottom: 20px;
     padding-bottom: 10px;
     border-bottom: 1px solid #ddd;
     text-transform: uppercase;
@@ -34,22 +41,42 @@ nav h1{
     font-size: 2em;
 }
 nav p, nav a{
+    padding: 6px;
     color: #777;
     font-weight: 300;
+    border-radius: 6px;
 }
+nav a:hover{
+    background-color: rgb(253, 172, 157);
+}
+
 .item{
     background-color: rgb(253, 172, 157);
     margin: 16px;
     padding: 14px 30px;
     border-radius: 12px;
 }
+.item:hover{
+    background-color: rgb(201, 117, 104);
+}
+.item h2{
+    margin-bottom: 12px;
+}
+.item p{
+    padding-inline: 12px;
+    font-size: 1.1rem;
+}
+.item h2{
+    margin-bottom: 12px;
+}
 footer{
     color: #777;
+    padding: 12px;
+    margin-top: auto;
     text-align: center;
-    margin: 80px auto 20px;
 }
-.add-person-form form{
-    max-width: 400px;
+.add-blog form{
+    max-width: 800px;
     margin: 0 auto;
 }
 input,
@@ -64,7 +91,9 @@ label{
     margin-top: 24px;
 }
 button{
-    margin-top: 20px;
+    display: block;
+    margin: 30px auto;
+    width: 200px;
     background: crimson;
     color: white;
     padding: 6px 12px;
