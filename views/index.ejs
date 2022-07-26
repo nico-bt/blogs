@@ -7,13 +7,19 @@
         
     <% data.map(item => { %>
         <a href="/blogs/<%= item._id %>" class="item-link">
-            <div class="item">
+        <div class="item">
                 <h2><%= item.title %></h2>
                 <p><%= item.shortDescription %></p>
+                <form class="delete-item-btn" action="/blogs/<%=item._id%>?_method=DELETE" method="POST">
+                    <button><img src="/delete.svg" alt="delete icon" width="24px"></button>
+                </form>
             </div>
         </a>
+    
     <% }) %>
 
     <%- include("./partials/footer.ejs") %>
+
+    
 </body>
 </html>

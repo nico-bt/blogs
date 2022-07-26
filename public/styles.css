@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&display=swap');
 
 body{
-    max-width: 800px;
+    max-width: 900px;
     margin: 0 auto;
     padding: 0 20px;
     font-family: 'Noto Serif', serif;
@@ -9,6 +9,7 @@ body{
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    background-color: rgb(240, 233, 233);
 }
 p, h1, h2, h3, a, ul{
     /* margin: 0; */
@@ -24,37 +25,40 @@ nav{
     display: flex;
     justify-content: space-between;
     margin-bottom: 20px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 2px solid rgb(201, 117, 104);
     text-transform: uppercase;
 }
 nav ul{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 10px;
 }
 nav li{
     list-style-type: none;
-    margin-left: 20px;
+    padding: 6px;
+    border-radius: 6px;
+}
+nav li:hover{
+    background-color: rgb(253, 172, 157);
 }
 nav h1{
     font-size: 2em;
 }
 nav p, nav a{
-    padding: 6px;
     color: #777;
     font-weight: 300;
-    border-radius: 6px;
-}
-nav a:hover{
-    background-color: rgb(253, 172, 157);
 }
 
 .item{
-    background-color: rgb(253, 172, 157);
+    background-color: rgb(250, 196, 186);
     margin: 16px;
     padding: 14px 30px;
-    border-radius: 12px;
+    /* border-radius: 12px; */
+    border-top-right-radius: 12px;
+    border-end-end-radius: 12px;
+    position: relative;
+    border-left: 10px solid black;
 }
 .item:hover{
     background-color: rgb(201, 117, 104);
@@ -69,6 +73,44 @@ nav a:hover{
 .item h2{
     margin-bottom: 12px;
 }
+.delete-item-btn button{
+    position: absolute;
+    top: 0;
+    right: 12px;
+    width: 60px;
+    background-color: rgb(248, 215, 210);
+    border: 1px solid gray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.delete-item-btn button:hover{
+    color: black;
+    border: 2px solid black;
+    box-shadow: 4px 4px 6px black;
+    background-color: red;
+}
+
+.item-individual{
+    background-color: rgb(250, 196, 186);
+    padding: 30px;
+    border-radius: 12px;
+    position: relative;
+    white-space: pre-wrap; /*To preserve white spaces and new lines from the textarea input*/
+    font-family: 'Noto Serif', serif;
+    font-size: 1.3rem;
+}
+.item-individual h2{
+    border-bottom: 1px solid black;
+    margin: 0;
+    padding: 0;
+}
+.item-individual p {
+    margin: 0;
+    padding-inline: 10%;
+}
+
 footer{
     color: #777;
     padding: 12px;
