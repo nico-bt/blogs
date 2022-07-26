@@ -10,9 +10,21 @@
         <div class="item">
                 <h2><%= item.title %></h2>
                 <p><%= item.shortDescription %></p>
-                <form class="delete-item-btn" action="/blogs/<%=item._id%>?_method=DELETE" method="POST">
-                    <button><img src="/delete.svg" alt="delete icon" width="24px"></button>
-                </form>
+                
+                <div class="item-btn-container">
+
+                    <a class="edit-item-btn" href="/blogs/<%=item._id%>/edit">
+                        <img src="/edit.svg" alt="edit icon" width="22px">
+                    </a>
+
+                    <form class="delete-item-btn" action="/blogs/<%=item._id%>?_method=DELETE" method="POST">
+                        <button>
+                            <img src="/delete.svg" alt="delete icon" width="22px">
+                        </button>
+                    </form>
+
+                </div>
+
             </div>
         </a>
     

@@ -1,9 +1,9 @@
 const mongoose = require("mongoose")
-const Blog = require("./models/Blog")
-const { getAllBlogs, createBlog, showForm, getBlog, deleteBlog} = require("./controllers/blogControllers")
 const express = require("express")
 const app = express()
-var methodOverride = require('method-override')
+var methodOverride = require('method-override') //Allows sending PUT and DELETE requests actions in a form.
+
+const { getAllBlogs, createBlog, showForm, getBlog, deleteBlog, showEditForm, editBlog} = require("./controllers/blogControllers")
 
 //.env file
 require("dotenv").config()
@@ -32,6 +32,10 @@ app.post("/blogs", createBlog)
 app.get("/blogs/:id", getBlog)
 
 app.delete("/blogs/:id", deleteBlog)
+
+app.get("/blogs/:id/edit", showEditForm)
+
+app.put("/blogs/:id", editBlog)
 
 app.use((req, res)=>{
     res.status(404).render("404")  

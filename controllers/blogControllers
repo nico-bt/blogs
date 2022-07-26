@@ -55,10 +55,35 @@ const deleteBlog = (req, res) => {
         })
 }
 
+// Show Form with actual info to edit blog
+// -------------------------------------------------------------------
+const showEditForm = (req,res)=> {
+    Blog.findById(req.params.id)
+        .then( blog => {
+            res.render("showEditForm", {title: "Edit", blog})
+        })
+        .catch( err => {
+            res.status(404).render("404")
+        })
+    }
+    
+    // Edit blog
+    // -------------------------------------------------------------------
+    const editBlog = (req, res) => {
+        Blog.findByIdAndUpdate(req.params.id, req.body)
+        .then(updatedBlog => res.redirect(`/blogs/${updatedBlog._id}`))
+        .catch( err => {
+            res.status(404).render("404")
+        })
+}
+
+
 module.exports = {
     getAllBlogs,
     showForm,
     createBlog,
     getBlog,
-    deleteBlog
+    deleteBlog,
+    showEditForm,
+    editBlog
 }
