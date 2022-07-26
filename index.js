@@ -12,17 +12,25 @@ const data = [
     {name: "Catalina", country: "Rusia"}
 ]
 
+//Middleware & static files
+app.use(express.static("public"))
+
+app.use((req,res,next) => {
+    console.log(req.method, req.url)
+    next()
+})
+
 // Routes
 app.get("/", (req, res)=>{
-    res.render("index", {data})
+    res.render("index", {data, title:"Home"})
 })
 
 app.get("/about", (req, res)=>{
-    res.render("about")
+    res.render("about", {title:"About"})
 })
 
 app.get("/blogs/create", (req, res)=>{
-    res.render("create")
+    res.render("create", {title:"Add new person"})
 })
 
 app.use((req, res)=>{

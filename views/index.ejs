@@ -5,14 +5,10 @@
     
     <%- include("./partials/nav.ejs") %>
 
-    <h1>Home Page</h1>
-    <p>Home - Lorem ipsum dolor sit, amet consectetur adipisicing elit. Illum, ea!</p>
-
     <h1>Data from index.js</h1>
     <% data.map(item => { %>
-        <div>
-            <h2><%= item.name %> - <%= item.country %></h2>
-            <p><%= item.name %></p>
+        <div class="item">
+            <h2><%= item.name %></h2>
             <p><%= item.country %></p>
         </div>
     <% }) %>
