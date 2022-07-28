@@ -15,6 +15,7 @@ app.set("view engine", "ejs")
 app.use(express.static("public"))
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'))  // override with POST having ?_method=DELETE
+app.use(express.json())
 
 
 // Routes
