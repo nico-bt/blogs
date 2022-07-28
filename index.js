@@ -19,6 +19,8 @@ app.use(methodOverride('_method'))  // override with POST having ?_method=DELETE
 
 // Routes
 // ---------------------------------------------------
+app.use(require("./routes/authRoutes"))
+
 app.get("/about", (req, res)=>{
     res.render("about", {title:"About"})
 })
