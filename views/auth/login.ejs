@@ -5,16 +5,49 @@
 <body>
     <%- include("../partials/nav.ejs") %>
 
-    <form action="/login" class="signup">
+    <form action="/login" method="POST" class="signup" id="login-form">
         <h2>Log in</h2>
+
+        <div id="both-required-errMsg"></div>
+        
+        <% if (locals.error) { %>
+            <div class="error" id="error-div"><%=error%></div>
+        <% } %>
+
         <label for="email">Email</label>
-        <input type="text" name="email" id="email" required />
-        <div class="email error"></div>
+        <input type="text" name="email" id="email"
+            <% if (locals.error && locals.email) { %>
+                value=<%=email%>
+            <% } %>
+        >
+
         <label for="password">Password</label>
-        <input type="password" name="password" id="password" required />
-        <div class="password error"></div>
+        <input type="password" name="password" id="password" />
+
         <button>Log in</button>
     </form>
+
+    <script>
+        // Select elements
+        const emailInput = document.querySelector("#email")
+        const passwordInput = document.querySelector("#password")
+        const loginForm = document.querySelector("#login-form")
+        const bothRequiredMsg = document.querySelector("#both-required-errMsg")
+        
+        // If input elements are empty avoid submitting
+        loginForm.addEventListener("submit", (e) => {
+            if(!emailInput.value || !passwordInput.value) {
+                e.preventDefault()
+                bothRequiredMsg.textContent = "Both are required"
+                bothRequiredMsg.classList.add("error")
+                // If there is a previous error message form the server, delete and replace with bothRequired    
+                const errorDiv = document.querySelector("#error-div")
+                if(errorDiv){
+                    errorDiv.remove()
+                }
+            }
+        })
+    </script>
 
 </body>
 

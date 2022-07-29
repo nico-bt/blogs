@@ -1,7 +1,7 @@
 const User = require("../models/User")
 const validator = require("validator") // For check if email is valid format
 const jwt = require("jsonwebtoken")
-
+const bcrypt = require("bcrypt")
 
 // Controllers
 // -------------------------------------------------------------
@@ -39,9 +39,22 @@ const signup_post = async (req, res) => {
     }
 }
 
-const login_post = (req, res) => {
+const login_post = async (req, res) => {
     const {email, password} = req.body
-    res.send(`email: ${email} - password: ${password}`)
+    try {
+        const user = await User.findOne({email})
+        if(user) {
+            const auth = await bcrypt.compare(password, user.password)
+            if(auth) {
+                const token = createToken(user._id)
+                res.cookie("jwt", token, { httpOnly: true, maxAge: daysInSecs * 1000 })
+                return res.redirect("/")
+            }
+        }
+        res.status(400).render("auth/login", {title: "Log in", error: "email or password incorrect", email})
+    } catch (error) {
+        res.status(400).render("auth/login", {title: "Log in", error})
+    }
 }
 
 //Helper functions
