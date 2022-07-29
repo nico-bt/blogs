@@ -4,7 +4,18 @@
 
 <body>
     <%- include("../partials/nav.ejs") %>
-    <h1>Log in</h1>
+
+    <form action="/login" class="signup">
+        <h2>Log in</h2>
+        <label for="email">Email</label>
+        <input type="text" name="email" id="email" required />
+        <div class="email error"></div>
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password" required />
+        <div class="password error"></div>
+        <button>Log in</button>
+    </form>
+
 </body>
 
 <%- include('../partials/footer'); -%>

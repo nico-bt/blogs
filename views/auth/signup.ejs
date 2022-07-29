@@ -4,7 +4,56 @@
 
 <body>
     <%- include("../partials/nav.ejs") %>
-    <h1>Sign up</h1>
+    
+    <form action="/signup" method="POST" class="signup">
+        <h2>Sign up</h2>
+        
+        <% if (locals.error) { %>
+            <div class="error" id="error-div"><%=error%></div>
+        <% } %>
+        
+        <label for="email">Email</label>
+        <input type="text" name="email" id="email"
+            <% if (locals.error && locals.email) { %>
+                value=<%=email%>
+            <% } %>
+        >
+
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password">
+
+        <button>Sign up</button>
+    </form>
+    
+    <script>
+        // Select elements
+        const emailInput = document.querySelector("#email")
+        const passwordInput = document.querySelector("#password")
+        const errorDiv = document.querySelector("#error-div")
+        
+        // Add red border to the element with error and autofocus
+        <% if(locals.error && type=="email") { %>
+            emailInput.classList.add("border-red")
+            emailInput.focus()
+            // Once start typing the input, remove the red border and the error message
+            emailInput.addEventListener("keydown", ()=>{
+                emailInput.classList.remove("border-red")
+                errorDiv.remove()
+            })
+        <% } %>
+            
+        // Add red border to the element with error and autofocus
+        <% if(locals.error && type=="password") { %>
+            passwordInput.classList.add("border-red")
+            passwordInput.focus()
+            // Once start typing the input, remove the red border and the error message
+            passwordInput.addEventListener("keydown", ()=>{
+                passwordInput.classList.remove("border-red")
+                errorDiv.remove()
+            })
+        <% } %>
+
+    </script>
 </body>
 
 <%- include('../partials/footer'); -%>

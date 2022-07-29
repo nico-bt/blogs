@@ -1,7 +1,8 @@
 const mongoose = require("mongoose")
 const express = require("express")
 const app = express()
-var methodOverride = require('method-override') //Allows sending PUT and DELETE requests actions in a form.
+var methodOverride = require('method-override') // Allows sending PUT and DELETE requests actions in a form.
+const cookieParser = require("cookie-parser") // Add cookie to res, req objects. res.cookie() to set one. req.cookies() to get them.
 
 const { getAllBlogs, createBlog, showForm, getBlog, deleteBlog, showEditForm, editBlog} = require("./controllers/blogControllers")
 
@@ -16,7 +17,7 @@ app.use(express.static("public"))
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'))  // override with POST having ?_method=DELETE
 app.use(express.json())
-
+app.use(cookieParser())
 
 // Routes
 // ---------------------------------------------------
