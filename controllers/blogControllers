@@ -67,14 +67,14 @@ const showEditForm = (req,res)=> {
         })
     }
     
-    // Edit blog
-    // -------------------------------------------------------------------
-    const editBlog = (req, res) => {
-        Blog.findByIdAndUpdate(req.params.id, req.body)
-        .then(updatedBlog => res.redirect(`/blogs/${updatedBlog._id}`))
-        .catch( err => {
-            res.status(404).render("404")
-        })
+// Edit blog
+// -------------------------------------------------------------------
+const editBlog = (req, res) => {
+    Blog.findByIdAndUpdate(req.params.id, req.body)
+    .then(updatedBlog => res.redirect(`/blogs/${updatedBlog._id}`))
+    .catch( err => {
+        res.status(404).render("404")
+    })
 }
 
 

@@ -29,7 +29,7 @@ app.get("/about", (req, res)=>{
 
 app.get("/", getAllBlogs)
 
-app.get("/blogs/create", showForm)
+app.get("/blogs/create", require("./middleware/authMiddleware"),showForm)
 
 app.post("/blogs", createBlog)
 
