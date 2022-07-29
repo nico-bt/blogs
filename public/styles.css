@@ -38,20 +38,18 @@ nav li{
     list-style-type: none;
     padding: 6px;
     border-radius: 6px;
+    font-weight: 300;
 }
 nav li:hover{
     background-color: rgb(253, 172, 157);
+    font-weight: bold;
 }
 nav h1{
     font-size: 2em;
 }
-nav p, nav a{
-    color: #777;
-    font-weight: 300;
-}
 
 .item{
-    background-color: rgb(250, 196, 186);
+    background-color: #fff;
     margin: 16px;
     padding: 14px 30px;
     /* border-radius: 12px; */
@@ -61,7 +59,7 @@ nav p, nav a{
     border-left: 10px solid black;
 }
 .item:hover{
-    background-color: rgb(201, 117, 104);
+    background-color: rgb(225, 156, 145);
 }
 .item h2{
     margin-bottom: 12px;
@@ -102,10 +100,11 @@ nav p, nav a{
     border: 2px solid black;
     box-shadow: 4px 4px 6px black;
     background-color: red;
+    cursor: pointer;
 }
 
 .item-individual{
-    background-color: rgb(250, 196, 186);
+    background-color: #fff;
     padding: 30px;
     border-radius: 12px;
     position: relative;
