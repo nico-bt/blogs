@@ -4,8 +4,8 @@ const app = express()
 var methodOverride = require('method-override') // Allows sending PUT and DELETE requests actions in a form.
 const cookieParser = require("cookie-parser") // Add cookie to res, req objects. res.cookie() to set one. req.cookies() to get them.
 
-const { getAllBlogs, createBlog, showForm, getBlog, deleteBlog, showEditForm, editBlog} = require("./controllers/blogControllers")
-const { requireAuth, getUserInfo } = require("./middleware/authMiddleware")
+const { getAllBlogs} = require("./controllers/blogControllers")
+const { getUserInfo } = require("./middleware/authMiddleware")
 
 //.env file
 require("dotenv").config()
@@ -30,24 +30,15 @@ app.get("/about", (req, res)=>{
     res.render("about", {title:"About"})
 })
 
-app.get("/", getAllBlogs)
+app.get("/", (req, res) => {
+    res.redirect("/blogs")
+})
 
-app.get("/blogs/create", requireAuth, showForm)
-
-app.post("/blogs", requireAuth, createBlog)
-
-app.get("/blogs/:id", getBlog)
-
-app.delete("/blogs/:id",requireAuth, deleteBlog)
-
-app.get("/blogs/:id/edit", requireAuth, showEditForm)
-
-app.put("/blogs/:id", requireAuth, editBlog)
+app.use("/blogs", require("./routes/blogRoutes"))
 
 app.use((req, res)=>{
     res.status(404).render("404")  
 })
-
 
 // Connect to MongoDB and Run app
 mongoose.connect(process.env.MONGO_URI)
