@@ -1,6 +1,14 @@
 <nav>
     <h1><%= title %></h1>
+    
+    <% if (locals.user) { %>
+        <div>
+            <p>Welcome <%=user.email%></p>
+        </div>
+    <% } %>
+    
     <ul>
+
         <% if (!locals.user) { %>
             <li>
                 <a href="/signup">Signup</a>
@@ -9,7 +17,6 @@
                 <a href="/login">Log in</a>
             </li>
         <% } else { %>
-            <li> Welcome <%=user.email%></li>
             <li>
                 <a href="/logout">Log out</a>
             </li>
