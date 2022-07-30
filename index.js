@@ -43,7 +43,7 @@ app.use((req, res)=>{
 // Connect to MongoDB and Run app
 mongoose.connect(process.env.MONGO_URI)
     .then( ()=>{
-        app.listen(3000, ()=>{
+        app.listen(process.env.PORT, ()=>{
             console.log("Connected to MongoDB & Listening in port 3000")
         })
     })
