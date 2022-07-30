@@ -8,6 +8,7 @@
     <div class="item-individual">
         <h2><%= blog.title %></h2>
         <p><%= blog.content %></p>
+        <p class="item-individual-backhome"><a href="/"><img src="/back.svg" alt="back home icon" width="40px"></a></p>
 
         <% if (locals.user) { %>
             <div class="item-btn-container">
