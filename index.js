@@ -44,7 +44,7 @@ app.use((req, res)=>{
 mongoose.connect(process.env.MONGO_URI)
     .then( ()=>{
         app.listen(process.env.PORT, ()=>{
-            console.log("Connected to MongoDB & Listening in port 3000")
+            console.log("Connected to MongoDB & Listening in port " + process.env.PORT)
         })
     })
     .catch(err => console.log(err))
