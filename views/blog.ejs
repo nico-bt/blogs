@@ -9,20 +9,20 @@
         <h2><%= blog.title %></h2>
         <p><%= blog.content %></p>
 
-        <div class="item-btn-container">
+        <% if (locals.user) { %>
+            <div class="item-btn-container">
 
-            <a class="edit-item-btn" href="/blogs/<%=blog._id%>/edit">
-                <img src="/edit.svg" alt="edit icon" width="22px">
-            </a>
-        
-            <form class="delete-item-btn" action="/blogs/<%=blog._id%>?_method=DELETE" method="POST">
-                <button>
-                    <img src="/delete.svg" alt="delete icon" width="22px">
-                </button>
-            </form>
-        
-        </div>
-        
+                <a class="edit-item-btn" href="/blogs/<%=blog._id%>/edit">
+                    <img src="/edit.svg" alt="edit icon" width="22px">
+                </a>
+            
+                <form class="delete-item-btn" action="/blogs/<%=blog._id%>?_method=DELETE" method="POST">
+                    <button>
+                        <img src="/delete.svg" alt="delete icon" width="22px">
+                    </button>
+                </form>
+            </div>
+        <% } %>
     </div>
 
     <%- include("./partials/footer.ejs") %>

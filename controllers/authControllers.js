@@ -5,14 +5,21 @@ const bcrypt = require("bcrypt")
 
 // Controllers
 // -------------------------------------------------------------
+
+// Show signup form
+// ******************
 const signup_get = (req, res) => {
     res.render("auth/signup", {title: "Sign up"})
 }
 
+// Show login form
+// ******************
 const login_get = (req, res) => {
     res.render("auth/login", {title: "Log in"})
 }
 
+// Sign up - create user in db
+// *****************************
 const signup_post = async (req, res) => {
     const {email, password} = req.body
 
@@ -39,6 +46,8 @@ const signup_post = async (req, res) => {
     }
 }
 
+// Log in. Check credentials and log in
+// **************************************
 const login_post = async (req, res) => {
     const {email, password} = req.body
     try {
@@ -55,6 +64,13 @@ const login_post = async (req, res) => {
     } catch (error) {
         res.status(400).render("auth/login", {title: "Log in", error})
     }
+}
+
+// Log out
+// ******************
+const logout = (req, res) => {
+    res.cookie("jwt", "", {maxAge: 1})
+    res.redirect("/")
 }
 
 //Helper functions
@@ -91,5 +107,6 @@ module.exports = {
     signup_get,
     login_get,
     signup_post,
-    login_post
+    login_post,
+    logout
 }

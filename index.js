@@ -5,6 +5,7 @@ var methodOverride = require('method-override') // Allows sending PUT and DELETE
 const cookieParser = require("cookie-parser") // Add cookie to res, req objects. res.cookie() to set one. req.cookies() to get them.
 
 const { getAllBlogs, createBlog, showForm, getBlog, deleteBlog, showEditForm, editBlog} = require("./controllers/blogControllers")
+const { requireAuth, getUserInfo } = require("./middleware/authMiddleware")
 
 //.env file
 require("dotenv").config()
@@ -23,23 +24,25 @@ app.use(cookieParser())
 // ---------------------------------------------------
 app.use(require("./routes/authRoutes"))
 
+app.get("*", getUserInfo)
+
 app.get("/about", (req, res)=>{
     res.render("about", {title:"About"})
 })
 
 app.get("/", getAllBlogs)
 
-app.get("/blogs/create", require("./middleware/authMiddleware"),showForm)
+app.get("/blogs/create", requireAuth, showForm)
 
-app.post("/blogs", createBlog)
+app.post("/blogs", requireAuth, createBlog)
 
 app.get("/blogs/:id", getBlog)
 
-app.delete("/blogs/:id", deleteBlog)
+app.delete("/blogs/:id",requireAuth, deleteBlog)
 
-app.get("/blogs/:id/edit", showEditForm)
+app.get("/blogs/:id/edit", requireAuth, showEditForm)
 
-app.put("/blogs/:id", editBlog)
+app.put("/blogs/:id", requireAuth, editBlog)
 
 app.use((req, res)=>{
     res.status(404).render("404")  
