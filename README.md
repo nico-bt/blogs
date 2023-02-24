@@ -8,4 +8,3 @@ Once you are logged in as the admin, you can add, edit and delete blogs.
 - MongoDB as the database
 - Frontend using EJS template as the view engine
 
-### [Live project Here](https://brainy-culottes-elk.cyclic.app/)
